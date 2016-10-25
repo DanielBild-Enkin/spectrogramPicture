@@ -4,15 +4,13 @@ import spectrographPicture.data as spd
 import numpy.fft as fft
 import scipy.io.wavfile as wavf
 
-def getWave(im):
+def getWaveReal(im):
     
     scaledArray = spd.makeScaledArray(im)
-    comp = scaledArray
-    #comp = scaledArray[range(512),:]
-    #comp = spd.getReal(scaledArray) + 1j*spd.getReal(scaledArray)    
+    comp = scaledArray 
     
     shp = comp.shape    
-    subWaveLength = 2*shp[0]-2;
+    subWaveLength = 2*shp[0];
     wave = np.zeros(subWaveLength*shp[1])
     ham = np.hamming(shp[0])    
     
@@ -20,18 +18,11 @@ def getWave(im):
         
         col = comp[:,ii]
         
-        #col = col*ham
         subWaveFull = fft.irfft(col)
-        subWave = subWaveFull[range(subWaveLength)]
+        subWave = np.zeros(subWaveLength)
+        subWave[range(subWaveFull.shape[0])]=subWaveFull 
+              
         
-        #HAM = np.hamming(subWaveLength)               
-        #subWave = subWave*HAM          
-                              
-        #if ii == 1:
-        #    wave = subWaveFull
-                              
-                              
-        #
         #print(subWave.shape[0])
         wave[range(ii*subWaveLength,(ii+1)*subWaveLength-1)] = subWave
         
