@@ -1,4 +1,4 @@
- 
+cd 
 a spectrogram is a mehtod of analysising sounds that shows the fourier transform of a changing waveform at each point intime. This program takes an image as interprets it as a spectrogram, creating the  waveform that would have the image as a spectrogram.
 
 to run:

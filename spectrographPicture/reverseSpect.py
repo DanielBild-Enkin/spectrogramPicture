@@ -4,7 +4,7 @@ import spectrographPicture.data as spd
 import numpy.fft as fft
 import scipy.io.wavfile as wavf
 
-def getWaveReal(im):
+def getWave(im):
     
     scaledArray = spd.makeScaledArray(im)
     comp = scaledArray 
