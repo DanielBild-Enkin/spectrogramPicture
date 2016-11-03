@@ -7,13 +7,14 @@ This is a temporary script file.
 #%%
 import numpy as np
 import matplotlib.pyplot as plt
+
 import spectrographPicture.data as spd
-import spectrographPicture.reverseSpect as rs
-import spectrographPicture.forwardSpect as fs
+import spectrographPicture.reverse_spect as rs
+import spectrographPicture.forward_spect as fs
 #%%
 
 
-img = spd.loadImage("test/kd.jpg")
+img = spd.load_image("test/kd.jpg")
 wave = rs.getWave(img)
 rs.writeWav('kd.wav',wave)
 

@@ -1,46 +1,18 @@
-
-
-from PIL import Image
+"""loads images and converts to array other functions can use"""
 import numpy as np
+from PIL import Image
 
-def loadImage(path):
+def load_image(path):
+    """loads images"""
     return Image.open(path)
 
- 
-def makeScaledArray(im):
-    
-    intArray = np.array(im)
-    flatIntArray = np.sum(intArray,2)
-    scaledArray = np.flipud(1-(flatIntArray/382.5-1))
-    #scaledArray = scaledArray-np.mean(scaledArray)
-    return scaledArray
 
-def getImag(scaledArray):
-    
-    shp = scaledArray.shape
-    imag = np.zeros(shp)    
-    
-    for ii in range(shp[1]):
-        reloa
-        col = scaledArray[:,ii]
-        imag[:,ii] = (col - np.flipud(col))/2.
-        
-    return imag
-
-def getReal(scaledArray):
-    
-    shp = scaledArray.shape
-    real = np.zeros(shp)
-    
-    for ii in range(shp[1]):
-        
-        col = scaledArray[:,ii]
-        real[:,ii] = (col + np.flipud(col))/2.
-        
-    return real
-    
-def getComplex(scaledArray):
-
-    comp = getReal(scaledArray) + 1j* getImag(scaledArray)
-    
-    return comp
+def make_scaled_array(img):
+    """converts image into array usuable by other functions.
+    converts RGB to single number (gray scale).
+    scales array from 0-127 to 0-1 and reverses scale to work
+    with the Audacity spetrogram."""
+    int_array = np.array(img)
+    flat_int_array = np.sum(int_array, 2)
+    scaled_array = np.flipud(1-(flat_int_array/382.5-1))
+    return scaled_array
