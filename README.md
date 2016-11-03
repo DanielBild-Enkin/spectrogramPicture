@@ -8,15 +8,15 @@ import spectrographPicture.reverse_spect as rs
 import spectrographPicture.forward_spect as fs
 
 
-img = spd.load_image("test/kd.jpg")
-wave = rs.getWave(img)
-rs.writeWav('kd.wav',wave)
+img = spd.load_image("test/kd.jpg")\r\n
+wave = rs.getWave(img)\r\n
+rs.writeWav('kd.wav',wave)\r\n
 
-sa = fs.getSpect(wave,img.size[1]*2-2)
-fs.plotSpect(sa)
+sa = fs.getSpect(wave,img.size[1]*2-2)\r\n
+fs.plotSpect(sa)\r\n
 
-saw = fs.getSpectWalking(wave,2048,512)
-fs.plotSpect(saw)
+saw = fs.getSpectWalking(wave,2048,512)\r\n
+fs.plotSpect(saw)\r\n
 
 The resulting .wav file can be loaded into Audacity and you can view the spectrogram and see that it is similar to the initial image. For optimal viewing (outside of the function provided) the settings should be 
 
